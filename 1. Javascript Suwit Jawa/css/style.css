@@ -1,0 +1,232 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Latihan Suwit Jawa v2.0 */
+
+body {
+  /* background: url("../img/bg.png"); */
+  background-color: #21262d;
+  font-family: arial;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  margin: 10px auto;
+  margin-top: 20px;
+  text-shadow: 0 0 10px goldenrod;
+}
+
+.container {
+  width: 600px;
+  position: relative;
+  margin: auto;
+  padding: 10px;
+}
+
+.area-komputer {
+  width: 560px;
+  height: 230px;
+  background-color: lightblue;
+  border-radius: 40px 40px 0 0;
+  margin: 10px auto;
+  padding-top: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px 5px lightseagreen;
+}
+
+.area-pemain {
+  width: 560px;
+  height: 230px;
+  background-color: lightgreen;
+  border-radius: 0 0 40px 40px;
+  margin: 10px auto;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px 5px limegreen;
+}
+
+.info {
+  width: 180px;
+  height: 60px;
+  font-size: 25px;
+  border: 5px solid salmon;
+  color: rgb(250, 97, 80);
+  text-shadow: 0 0 3px #333;
+  position: absolute;
+  background-color: #fff;
+  z-index: 1;
+  top: calc(50% - 60px / 2);
+  left: calc(50% - 180px / 2);
+  border-radius: 30px;
+  text-align: center;
+  line-height: 60px;
+}
+
+img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+}
+
+ul {
+  padding-top: 70px;
+  margin: 0 20px;
+}
+
+li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.gajah,
+.semut,
+.orang {
+  transition: 0.3s;
+  top: 0px;
+  position: relative;
+  cursor: pointer;
+}
+
+.gajah:hover,
+.semut:hover,
+.orang:hover {
+  box-shadow: 0 0 5px 5px limegreen;
+}
+
+.gajah:active,
+.semut:active,
+.orang:active {
+  top: 5px;
+}
