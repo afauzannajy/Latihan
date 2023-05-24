@@ -1,34 +1,34 @@
-$(".search-button").on("click", function () {
-  $.ajax({
-    url:
-      "http://www.omdbapi.com/?apikey=2b1184cb&s=" + $(".input-keyword").val(),
-    success: (results) => {
-      const movies = results.Search;
-      let card = "";
-      movies.forEach((m) => {
-        card += showMovies(m);
-      });
-      $(".movie-container").html(card);
-      $(".modal-detail-button").on("click", function () {
-        console.log($(this).data("imdbid"));
-        $.ajax({
-          url:
-            "http://www.omdbapi.com/?apikey=2b1184cb&i=" +
-            $(this).data("imdbid"),
-          success: (md) => {
-            const movieDetail = showMovieDetail(md);
-            $(".modal-body").html(movieDetail);
-          },
-          error: (e) => {
-            console.log(e.responseText);
-          },
+const searchButton = document.querySelector(".search-button");
+searchButton.addEventListener("click", function () {
+  const inputKeyword = document.querySelector(".input-keyword");
+  fetch("http://www.omdbapi.com/?apikey=2b1184cb&s=" + inputKeyword.value)
+    .then((response) => response.json())
+    .then((response) => {
+      const movies = response.Search;
+      let cards = "";
+      movies.forEach((m) => (cards += showMovies(m)));
+      const movieContainer = document.querySelector(".movie-container");
+      movieContainer.innerHTML = cards;
+
+      // ketika tombol detail di-klik
+      const modalDetailButton = document.querySelectorAll(
+        ".modal-detail-button"
+      );
+      modalDetailButton.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const imdbid = this.dataset.imdbid;
+          fetch("http://www.omdbapi.com/?apikey=2b1184cb&i=" + imdbid)
+            .then((response) => response.json())
+            .then((md) => {
+              const movieDetail = showMovieDetail(md);
+              const modalBody = document.querySelector(".modal-body");
+              modalBody.innerHTML = movieDetail;
+            })
+            .catch((response) => console.log("Terjadi Error: " + response));
         });
       });
-    },
-    error: (e) => {
-      console.log(e.responseText);
-    },
-  });
+    })
+    .catch((response) => console.log("Terjadi Error: " + response));
 });
 
 function showMovies(m) {
