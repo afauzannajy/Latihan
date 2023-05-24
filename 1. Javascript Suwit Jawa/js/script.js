@@ -13,6 +13,20 @@ function getHasil(komp, pemain) {
   if (komp == "orang") return pemain == "semut" ? "KALAH !" : "MENANG !";
 }
 
+function acak() {
+  const imgKomp = document.querySelector(".img-komputer");
+  const gambar = ["gajah", "orang", "semut"];
+  let i = 0;
+  const waktuMulai = new Date().getTime();
+  setInterval(function () {
+    if (new Date().getTime() - waktuMulai > 1000) {
+      return;
+    }
+    imgKomp.setAttribute("src", "img/" + gambar[i++] + ".png");
+    if (i == gambar.length) i = 0;
+  }, 100);
+}
+
 const pilihan = document.querySelectorAll("li img");
 pilihan.forEach(function (pil) {
   pil.addEventListener("click", function () {
@@ -20,10 +34,12 @@ pilihan.forEach(function (pil) {
     const pilihanPemain = pil.className;
     const hasil = getHasil(pilihanKomputer, pilihanPemain);
 
-    const imgKomp = document.querySelector(".img-komputer");
-    imgKomp.setAttribute("src", "img/" + pilihanKomputer + ".png");
-
-    const info = document.querySelector(".info");
-    info.innerHTML = hasil;
+    acak();
+    setTimeout(function () {
+      const imgKomp = document.querySelector(".img-komputer");
+      imgKomp.setAttribute("src", "img/" + pilihanKomputer + ".png");
+      const info = document.querySelector(".info");
+      info.innerHTML = hasil;
+    }, 1000);
   });
 });
