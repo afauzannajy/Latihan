@@ -67,7 +67,7 @@
         class="rounded-circle img-thumbnail"
       />
       <h1 class="display-4">Ahmad Fauzan Najy</h1>
-      <p class="lead">Student | Programmer</p>
+      <p class="lead">Student | Web Developer</p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#f8f9fa"
@@ -224,10 +224,23 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <div
+              class="alert alert-dark alert-dismissible formAlert d-none"
+              role="alert"
+            >
+              <strong>Terima kasih!</strong> Pesan anda berhasil dikirim.
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+            <form name="afn-portfolio-bs5">
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input
+                  name="nama"
                   type="text"
                   class="form-control"
                   id="name"
@@ -238,6 +251,7 @@
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input
+                  name="email"
                   type="email"
                   class="form-control"
                   id="email"
@@ -248,13 +262,27 @@
               <div class="mb-3">
                 <label for="message" class="form-label">Message</label>
                 <textarea
+                  name="pesan"
                   class="form-control"
                   id="message"
-                  rows="3"
+                  rows="4"
                   placeholder="Please enter your message..."
                 ></textarea>
               </div>
-              <button type="submit" class="btn btn-dark">Submit</button>
+              <button type="submit" class="btn btn-dark btnSubmit">
+                Submit
+              </button>
+              <button
+                class="btn btn-dark btnLoading d-none"
+                type="button"
+                disabled
+              >
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </button>
             </form>
           </div>
         </div>
@@ -287,5 +315,28 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbw0mDA1Uq3ZhCyRVqLdT6ZSUmV9OZUHVnM2UbSOPL0sM4VzjUwQ6j0cdVzlshR83wCSLQ/exec";
+      const form = document.forms["afn-portfolio-bs5"];
+
+      const formAlert = document.querySelector(".formAlert");
+      const btnSubmit = document.querySelector(".btnSubmit");
+      const btnLoading = document.querySelector(".btnLoading");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        btnSubmit.classList.toggle("d-none");
+        btnLoading.classList.toggle("d-none");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            formAlert.classList.toggle("d-none");
+            btnSubmit.classList.toggle("d-none");
+            btnLoading.classList.toggle("d-none");
+            form.reset();
+          })
+          .catch((error) => alert("Error: " + error.message));
+      });
+    </script>
   </body>
 </html>
